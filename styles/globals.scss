@@ -1,0 +1,764 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Kanit:wght@700&display=swap");
+
+// SPLIT EVERYTHING INTO SASS IMPORTS LATER
+
+// SASS VARIABLES
+// fonts
+$h1-font: "Kanit", sans-serif;
+// colours
+$black: #101014;
+$white: #fbfafa;
+$grey: #8b8b8b;
+$orange: #ff802c;
+$purple: #6671e3;
+// borders
+$border: 1.5px solid $white;
+// drop shadow
+$shadow: 6px 6px $orange;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+html {
+  background-color: $black;
+  color: $white;
+  font-size: 1em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+h1 {
+  font-family: $h1-font;
+  font-weight: bold;
+  font-size: 11rem;
+  line-height: 70%;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+  color: $orange;
+}
+
+h4 {
+  font-size: 1.6rem;
+}
+
+h5 {
+  font-size: 1rem;
+  color: $grey;
+  font-weight: 400;
+}
+
+// LANDING PAGE SPLASH/HERO
+
+.SplashContainer {
+  height: 90vh;
+  max-width: fit-content;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  h1 {
+    display: block;
+    text-align: center;
+    mix-blend-mode: exclusion;
+  }
+}
+
+.SplashContainer::before {
+  //    ALT
+  //   background-image: url("../public/assets/Bases-Purple.png");
+  //   background-position: -100% 55%;
+  //   background-size: 115%;
+  //insert alt from here
+  content: "";
+  position: absolute;
+  mix-blend-mode:lighten;
+  height: 200vh;
+  width: 200vw;
+  background-image: url("../public/assets/fullImageWGrain.webp");
+  background-position: 20% 65%;
+  background-size: 60%;
+  background-repeat: no-repeat;
+  //insert alt to here
+  z-index: -1;
+  animation: orbit 20s infinite linear;
+  transform-origin: 73vw 93vh;
+}
+
+@keyframes orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+//mobile media query
+
+@media screen and (max-width: 830px) {
+  .SplashContainer {
+    h1 {
+      font-size: 4.5rem;
+      overflow: hidden;
+    }
+  }
+}
+
+// NAVIGATION
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 1rem;
+  margin-top: 0.5rem;
+  height: 8vh;
+  .logo {
+    max-width: 10rem;
+    height: auto;
+  }
+}
+
+// FOOTER
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 2rem;
+  padding: 1rem;
+  border-top: $border;
+
+  .icon {
+    mix-blend-mode: hard-light;
+    height: 30px;
+    width: auto;
+  }
+
+  .socials {
+    display: flex;
+    justify-content: space-between;
+    width: 8rem;
+  }
+}
+
+// BUTTONS
+.primary {
+  border: $border;
+  background-color: $black;
+  padding: 0.5rem;
+  padding-inline: 1rem;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  text-align: center;
+  color: $white;
+  border-color: $white;
+  overflow: hidden;
+
+  width: fit-content;
+  height: 2.8rem;
+}
+
+.secondary {
+  border: $border;
+  background-color: $black;
+  padding: 0.5rem;
+  padding-inline: 1rem;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+  text-align: center;
+  color: $grey;
+  border-color: $grey;
+}
+
+.booking-steps-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  align-items: flex-end;
+}
+
+// button hover effects
+
+.primary:hover {
+  border-color: $orange;
+  transition: all 0.4s ease-in;
+  cursor: pointer;
+}
+
+.primary::after {
+  content: "";
+  display: block;
+  position: relative;
+  width: 150%;
+  height: 1rem;
+  background-color: $white;
+  top: -500%;
+  left: -80%;
+  rotate: -45deg;
+}
+
+.primary:hover::after {
+  transition: all 0.8s;
+  transform: translate(0, 2000%);
+}
+
+.secondary:hover {
+  border-color: $orange;
+  color: $white;
+  transition: all 0.4s ease-in;
+  cursor: pointer;
+}
+
+//INPUT FIELDS
+.react-numeric-input {
+  max-width: 30%;
+  input {
+    max-width: 100%;
+    height: 100%;
+  }
+}
+
+// SECTIONS
+section {
+  // border-top: $border;
+  padding-bottom: 2rem;
+}
+
+// BOXES
+.box {
+  border: $border;
+}
+
+// Accordions
+.accordion {
+  border: $border;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.accordion__button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  :nth-child(2) {
+    text-align: right;
+  }
+}
+
+.dropdown {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  .dropdown-arrow {
+    margin-right: 0;
+    width: 1rem;
+    height: 1.5rem;
+    display: block;
+  }
+}
+
+.accordion-field {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  column-gap: 2rem;
+  max-width: 30rem;
+
+  label {
+    display: grid;
+    width: max-content;
+    gap: 0.5rem;
+
+    input {
+      background-color: $black;
+      border: $border;
+      color: $white;
+      padding: 0.5rem;
+
+      path {
+        color: $white;
+      }
+    }
+    ::-webkit-calendar-picker-indicator {
+      background-color: $white;
+      padding: 0.25rem;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+
+    input::placeholder {
+      color: $grey;
+    }
+  }
+}
+
+.accordion__button:hover {
+  cursor: pointer;
+}
+
+// payment fields
+.payment-field {
+  border: $border;
+  margin-top: 1rem;
+  padding: 1rem;
+  padding-bottom: 1.5rem;
+  display: grid;
+  row-gap: 1rem;
+  form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      label {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.25rem;
+
+        span {
+          position: relative;
+          color: $grey;
+          align-self: center;
+        }
+      }
+    }
+  }
+  input,
+  textarea {
+    background-color: $black;
+    border: $border;
+    color: $white;
+    padding: 0.5rem;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: $grey;
+  }
+}
+
+// HEADLINERS
+.headliners {
+  padding-inline: 2rem;
+}
+
+.headliners-container {
+  width: 100%;
+  gap: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.headliner-box {
+  width: fit-content;
+  height: fit-content;
+  max-width: 25rem;
+  display: grid;
+
+  .headliner-img {
+    aspect-ratio: 1/1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .headliner-card-titles {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem;
+    align-items: center;
+  }
+
+  h4 {
+    color: $grey;
+  }
+
+  p {
+    margin: 1rem;
+  }
+
+  iframe {
+    justify-self: center;
+    margin-bottom: 1rem;
+  }
+}
+
+// LINEUP
+
+.lineup-menu {
+  padding-bottom: 2rem;
+  padding-inline: 2rem;
+  border: $border;
+  border-inline: none;
+}
+
+.lineup-menu-actions {
+  display: grid;
+
+  label {
+    text-transform: uppercase;
+  }
+
+  select {
+    color: $white;
+    background-color: $black;
+    border: $border;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+
+  option {
+    text-transform: uppercase;
+    // not working for some reason?
+  }
+}
+
+.lineup-list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  padding-inline: 2rem;
+  gap: 2rem;
+  justify-content: center;
+
+  h5 {
+    color: $orange;
+    text-transform: uppercase;
+  }
+
+  .lineup-card {
+    border: $border;
+    padding: 1rem;
+    box-shadow: $shadow;
+  }
+
+  .lineup-card-titles {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .lineup-showing {
+    width: 100%;
+  }
+}
+
+// BOOKING STEPS - ORDER INTERFACE
+
+.order-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 1rem;
+  padding-bottom: 2rem;
+  min-height: 90vh;
+}
+
+.order-interface {
+  padding-inline: 2rem;
+  padding-top: 1rem;
+  border: $border;
+}
+
+.bookingfee {
+  margin-top: 1rem;
+  strong {
+    color: $orange;
+  }
+}
+
+.input-box {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .ticket-details {
+    width: 100%;
+  }
+
+  .price-input {
+    display: flex;
+    // justify-content: flex-end;
+    column-gap: 1rem;
+    // width: 15rem;
+    padding: 1rem;
+    position: relative;
+  }
+}
+
+// counter input
+.react-numeric-input {
+  max-width: none !important;
+  width: 6rem !important;
+  input {
+    max-width: 100% !important;
+    border: $border !important;
+    background-color: $black;
+    color: $white;
+  }
+  b {
+    background-color: $black !important;
+    color: $white !important;
+    i {
+      background-color: $white !important;
+    }
+  }
+  b:hover {
+    cursor: pointer !important;
+  }
+}
+
+.rc-progress-line-path {
+  stroke: $orange;
+}
+
+.input-text {
+  line-height: 225%;
+}
+
+// select drop down input
+.drop-box {
+  width: 100%;
+}
+
+select {
+  background-color: $black;
+  color: $white;
+  border: $border;
+  padding: 0.5rem;
+  padding-inline: 1rem;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+// checkboxes
+.checkbox-container {
+  display: grid;
+  align-items: center;
+
+  .checkbox-label {
+    position: relative;
+    top: 1px;
+    width: 2rem;
+    height: 2rem;
+    border: $border;
+    border-width: 1px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: block;
+  }
+
+  .checkbox-label::after {
+    content: "";
+    position: absolute;
+    top: 0.1rem;
+    left: 0.7rem;
+    width: 0.5rem;
+    height: 1.2rem;
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    border-right: 2px solid $white;
+    border-bottom: 2px solid $white;
+    transition: all 0.3s ease;
+    transition-delay: 0.15s;
+  }
+
+  #checkbox:checked ~ .checkbox-label {
+    border-color: $orange;
+    background: $black;
+  }
+
+  #checkbox:checked ~ .checkbox-label::after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+
+  #checkbox2:checked ~ .checkbox-label {
+    border-color: $orange;
+    background: $black;
+  }
+
+  #checkbox2:checked ~ .checkbox-label::after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+// BOOKING STEPS - ORDER OVERVIEW
+
+.order-overview {
+  padding: 1rem;
+  border: $border;
+  border-left: none;
+  right: 0;
+
+  section {
+    border-color: $grey;
+    padding: 0.5rem;
+    padding-inline: 0;
+  }
+
+  .overview-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    padding-inline: 0;
+  }
+}
+
+// Mobile order overview - drop-down functionality, etc.
+.mobile-order-overview {
+  grid-row: 1;
+  border: $border;
+  margin-bottom: 1rem;
+
+  .order-overview-dropdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    // border-bottom: $border;
+  }
+
+  .order-overview {
+    border: none;
+  }
+}
+
+.dropdown-arrow {
+  transform: rotate(-90deg);
+  font-size: 2.5rem;
+  line-height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.mobile-order-overview:hover {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.orange {
+  color: $orange;
+}
+
+.white {
+  color: $white;
+}
+
+//form components
+.step-indicator {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+// FEEDBACK PAGES
+.center-container {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  align-items: center;
+}
+
+.center-content {
+  display: grid;
+  text-align: center;
+  justify-items: center;
+  gap: 1rem;
+}
+
+// FEEDBACK MESSAGES
+.feedback {
+  margin-top: 1rem;
+  border: $border;
+  border-color: $orange;
+  padding: 1rem;
+}
+
+// MEDIA QUERIES
+
+@media screen and (min-width: 900px) {
+  // LANDING PAGE
+  .lineup {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 0;
+    border: none;
+    border-top: $border;
+
+    .lineup-menu {
+      border: none;
+      border-right: $border;
+      height: 100%;
+    }
+    .lineup-list {
+      padding-bottom: 3rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  // BOOKING STEPS
+  .order-container {
+    // width: 100vw;
+    display: grid;
+    grid-template-columns: 60% 40%;
+  }
+
+  .order-interface {
+    grid-row: 1 / -1;
+    // height: 80vh;
+    // overflow-y: scroll;
+  }
+
+  .order-overview {
+    grid-column: 2 / -1;
+    grid-row: 1 / 2;
+  }
+
+  .booking-steps-buttons {
+    grid-column: 2 / -1;
+    grid-row: 2 / -1;
+  }
+
+  .drop-box {
+    width: 60%;
+  }
+}
