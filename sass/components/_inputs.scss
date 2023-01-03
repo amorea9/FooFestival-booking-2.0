@@ -1,0 +1,140 @@
+// payment fields
+.payment-field {
+  border: $border;
+  margin-top: 1rem;
+  padding: 1rem;
+  padding-bottom: 1.5rem;
+  display: grid;
+  row-gap: 1rem;
+  form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      label {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.25rem;
+
+        span {
+          position: relative;
+          color: $grey;
+          align-self: center;
+        }
+      }
+    }
+  }
+  input,
+  textarea {
+    background-color: $black;
+    border: $border;
+    color: $white;
+    padding: 0.5rem;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: $grey;
+  }
+}
+
+// counter input
+.react-numeric-input {
+  max-width: none !important;
+  width: 6rem !important;
+  input {
+    max-width: 100% !important;
+    border: $border !important;
+    background-color: $black;
+    color: $white;
+  }
+  b {
+    background-color: $black !important;
+    color: $white !important;
+    i {
+      background-color: $white !important;
+    }
+  }
+  b:hover {
+    cursor: pointer !important;
+  }
+}
+
+.rc-progress-line-path {
+  stroke: $orange;
+}
+
+.input-text {
+  line-height: 225%;
+}
+
+// select drop down input
+.drop-box {
+  width: 100%;
+}
+
+select {
+  background-color: $black;
+  color: $white;
+  border: $border;
+  padding: 0.5rem;
+  padding-inline: 1rem;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+// checkboxes
+.checkbox-container {
+  display: grid;
+  align-items: center;
+
+  .checkbox-label {
+    position: relative;
+    top: 1px;
+    width: 2rem;
+    height: 2rem;
+    border: $border;
+    border-width: 1px;
+    border-radius: 3px;
+    cursor: pointer;
+    display: block;
+  }
+
+  .checkbox-label::after {
+    content: "";
+    position: absolute;
+    top: 0.1rem;
+    left: 0.7rem;
+    width: 0.5rem;
+    height: 1.2rem;
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    border-right: 2px solid $white;
+    border-bottom: 2px solid $white;
+    transition: all 0.3s ease;
+    transition-delay: 0.15s;
+  }
+
+  #checkbox:checked ~ .checkbox-label {
+    border-color: $orange;
+    background: $black;
+  }
+
+  #checkbox:checked ~ .checkbox-label::after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+
+  #checkbox2:checked ~ .checkbox-label {
+    border-color: $orange;
+    background: $black;
+  }
+
+  #checkbox2:checked ~ .checkbox-label::after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+}

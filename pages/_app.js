@@ -1,4 +1,4 @@
-import "../styles/globals.scss";
+import "../sass/style.scss";
 import Layout from "../components/Layout.jsx";
 import App from "next/app";
 import { useEffect, useState } from "react";

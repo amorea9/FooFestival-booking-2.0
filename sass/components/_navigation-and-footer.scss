@@ -1,0 +1,35 @@
+// NAVIGATION
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 1rem;
+  margin-top: 0.5rem;
+  height: 8vh;
+  .logo {
+    max-width: 10rem;
+    height: auto;
+  }
+}
+
+// FOOTER
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  column-gap: 2rem;
+  padding: 1rem;
+  border-top: $border;
+
+  .icon {
+    mix-blend-mode: hard-light;
+    height: 30px;
+    width: auto;
+  }
+
+  .socials {
+    display: flex;
+    justify-content: space-between;
+    width: 8rem;
+  }
+}

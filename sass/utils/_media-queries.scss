@@ -1,0 +1,50 @@
+// MEDIA QUERIES
+
+@media screen and (min-width: 900px) {
+  // LANDING PAGE
+  .lineup {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 0;
+    border: none;
+    border-top: $border;
+
+    .lineup-menu {
+      border: none;
+      border-right: $border;
+      height: 100%;
+    }
+    .lineup-list {
+      padding-bottom: 3rem;
+    }
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  // BOOKING STEPS
+  .order-container {
+    // width: 100vw;
+    display: grid;
+    grid-template-columns: 60% 40%;
+  }
+
+  .order-interface {
+    grid-row: 1 / -1;
+    // height: 80vh;
+    // overflow-y: scroll;
+  }
+
+  .order-overview {
+    grid-column: 2 / -1;
+    grid-row: 1 / 2;
+  }
+
+  .booking-steps-buttons {
+    grid-column: 2 / -1;
+    grid-row: 2 / -1;
+  }
+
+  .drop-box {
+    width: 60%;
+  }
+}

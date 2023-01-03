@@ -1,0 +1,107 @@
+// BOOKING STEPS - ORDER INTERFACE
+
+.order-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 1rem;
+  padding-bottom: 2rem;
+  min-height: 90vh;
+}
+
+.order-interface {
+  padding-inline: 2rem;
+  padding-top: 1rem;
+  border: $border;
+}
+
+.bookingfee {
+  margin-top: 1rem;
+  strong {
+    color: $orange;
+  }
+}
+
+.input-box {
+  margin-top: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .ticket-details {
+    width: 100%;
+  }
+
+  .price-input {
+    display: flex;
+    // justify-content: flex-end;
+    column-gap: 1rem;
+    // width: 15rem;
+    padding: 1rem;
+    position: relative;
+  }
+}
+
+// BOOKING STEPS - ORDER OVERVIEW
+
+.order-overview {
+  padding: 1rem;
+  border: $border;
+  border-left: none;
+  right: 0;
+
+  section {
+    border-color: $grey;
+    padding: 0.5rem;
+    padding-inline: 0;
+  }
+
+  .overview-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    padding-inline: 0;
+  }
+}
+
+// Mobile order overview - drop-down functionality, etc.
+.mobile-order-overview {
+  grid-row: 1;
+  border: $border;
+  margin-bottom: 1rem;
+
+  .order-overview-dropdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    // border-bottom: $border;
+  }
+
+  .order-overview {
+    border: none;
+  }
+}
+
+.dropdown-arrow {
+  transform: rotate(-90deg);
+  font-size: 2.5rem;
+  line-height: 1rem;
+  margin-right: 0.5rem;
+}
+
+.mobile-order-overview:hover {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.orange {
+  color: $orange;
+}
+
+.white {
+  color: $white;
+}

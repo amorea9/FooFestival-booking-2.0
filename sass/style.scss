@@ -1,0 +1,24 @@
+// global variables
+@import "utils/global-style";
+//fonts
+@import "utils/fonts";
+//media queries
+@import "utils/media-queries";
+// user feedback
+@import "utils/feedback";
+//overall base styling
+@import "base/basic-style";
+//landing page general styling
+@import "pages/landing-page";
+//accordion
+@import "components/accordion";
+//inputs fields styling
+@import "components/inputs";
+//buttons styling
+@import "components/buttons";
+//navigation top and footer
+@import "components/navigation-and-footer";
+//order overview component
+@import "components/order-overview";
+//splash hero
+@import "components/splash-hero";

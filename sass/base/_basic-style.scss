@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+html {
+  background-color: $black;
+  color: $white;
+  font-size: 1em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+h1 {
+  font-family: $h1-font;
+  font-weight: bold;
+  font-size: 11rem;
+  line-height: 70%;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+  color: $orange;
+}
+
+h4 {
+  font-size: 1.6rem;
+}
+
+h5 {
+  font-size: 1rem;
+  color: $grey;
+  font-weight: 400;
+}
+// BOXES
+.box {
+  border: $border;
+}
+
+//INPUT FIELDS
+.react-numeric-input {
+  max-width: 30%;
+  input {
+    max-width: 100%;
+    height: 100%;
+  }
+}
+
+// SECTIONS
+section {
+  // border-top: $border;
+  padding-bottom: 2rem;
+}
