@@ -1,21 +1,34 @@
 import React from "react";
 
-function LineupMenu() {
+function LineupMenu(props) {
+  //getting all the band genres
+  let genreArray;
+  genreArray = props.bandsPlaying.map((band) => {
+    return band.genre;
+  });
+  //making sure there are no duplicates - only unique values
+  let genreNoDuplicates = [...new Set(genreArray)];
   return (
     <div className="lineup-menu">
       <h2>Lineup</h2>
       <div className="lineup-menu-actions">
         <label htmlFor="filter">Filter</label>
-        <select name="filter" id="filter">
-          <option value="all">All</option>
-          <option value="rock">Rock</option>
-          <option value="metal">Metal</option>
-          <option value="alternative">Alternative</option>
+        <select name="filter" id="filter" onChange={props.filterChanged}>
+          <option value="all" defaultValue>
+            All
+          </option>
+          {genreNoDuplicates.map((genre) => {
+            return (
+              <option value={genre} key={genre}>
+                {genre}
+              </option>
+            );
+          })}
         </select>
         <label htmlFor="sort">Sort</label>
-        <select name="sort" id="sort">
-          <option value="alpha">A-Z</option>
-          <option value="metal">Z-A</option>
+        <select name="sort" id="sort" onChange={props.sortingChanged}>
+          <option value="asc">A-Z</option>
+          <option value="desc">Z-A</option>
         </select>
       </div>
     </div>
