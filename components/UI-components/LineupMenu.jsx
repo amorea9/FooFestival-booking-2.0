@@ -12,7 +12,7 @@ function LineupMenu(props) {
     <div className="lineup-menu">
       <h2>Lineup</h2>
       <div className="lineup-menu-actions">
-        <label htmlFor="filter">Filter</label>
+        <label htmlFor="filter">Genre</label>
         <select name="filter" id="filter" onChange={props.filterChanged}>
           <option value="all" defaultValue>
             All
@@ -25,7 +25,7 @@ function LineupMenu(props) {
             );
           })}
         </select>
-        <label htmlFor="sort">Sort</label>
+        <label htmlFor="sort">Order</label>
         <select name="sort" id="sort" onChange={props.sortingChanged}>
           <option value="asc">A-Z</option>
           <option value="desc">Z-A</option>
