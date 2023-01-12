@@ -8,13 +8,15 @@ import { useRouter } from "next/router";
 import { insertOrder } from "../../modules/db";
 
 function step4(props) {
+  //number pattern="[0-9+]{16,19}"
   // order overview responsiveness
   const matches = useMediaQuery("(min-width: 1100px)");
   // routing
   const router = useRouter();
 
   // BUTTONS - send reservation request & reroute
-  async function confirm() {
+  async function confirm(e) {
+    e.preventDefault();
     const request = await fetch("https://morning-mountain-4570.fly.dev/fullfill-reservation", {
       method: "POST",
       headers: {
@@ -50,112 +52,79 @@ function step4(props) {
     router.push("/tickets/step3");
   }
 
-  // ---------- GARETH'S VERIFICATION ----------
-  // let cardFlag = false;
-  // let expiryFlag = false;
-  // let cvcFlag = false;
-  // let submitFlag = false;
-  // function verify(event) {
-  //   console.log("verification", "cardFlag: ", cardFlag, "expiryFlag: ", expiryFlag, "cvcFlag: ", cvcFlag, "submitFlag: ", submitFlag);
-
-  //   if (event.target.name === "cardNo") {
-  //     if (event.target.value.match(/^[0-9]{12}?$/)) {
-  //       cardFlag = true;
-  //     } else {
-  //       console.log("verification of card number failed: ", event.target.value);
-  //     }
-  //   } else if (event.target.name === "expiry") {
-  //     if (event.target.value.match(/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/)) {
-  //       expiryFlag = true;
-  //     } else {
-  //       console.log("verification of expiry failed: ", event.target.value);
-  //     }
-  //   } else if (event.target.name === "cvc") {
-  //     if (event.target.value.match(/^[0-9]{3,4}$/)) {
-  //       cvcFlag = true;
-  //     } else {
-  //       console.log("verification of cvc failed: ", event.target.value);
-  //     }
-  //   }
-  // }
-
-  // function shallPass(event) {
-  //   event.preventDefault();
-  //   console.log("shallPass function run");
-  //   if (cardFlag && expiryFlag && cvcFlag) {
-  //     submitFlag = true;
-  //     console.log("passed");
-  //     console.log(submitFlag);
-  //   } else {
-  //     console.log("failed");
-  //   }
-  // }
-
   return (
-    <div className="order-container">
-      <section className="order-interface">
-        <StepIndicator step={4} />
-        <h2>Payment information</h2>
-        <h5>Please enter your payment information.</h5>
-        <div className="payment-field">
-          <h3>Credit Card Details</h3>
-          <form>
-            <div>
-              <label htmlFor="form-name">
-                Name On Card
-                <input required type="text" name="name" id="form-name" placeholder="John Appleseed" />
-              </label>
-            </div>
-            <div>
-              <label htmlFor="form-card">
-                Card Number
-                <InputMask required mask="9999 9999 9999 9999" maskChar={null} placeholder={"1234 1234 1234 1234"} name="cardNo" id="form-cardNo" onBlur={props.verify} />
-              </label>
+    <form onSubmit={confirm}>
+      <div className="order-container">
+        <section className="order-interface">
+          <StepIndicator step={4} />
+          <h2>Payment information</h2>
+          <h5>Please enter your payment information.</h5>
+          <div className="payment-field">
+            <h3>Credit Card Details</h3>
+            <div className="payment-form-field">
+              <div className="card-details">
+                <label htmlFor="formName">
+                  Name on card
+                  <input id="formName" title="Must be a valid name" required pattern="[A-Za-z]{1,50}" aria-required="true" type="text" name="formName" placeholder="John Applebaum" />
+                </label>
 
-              <label htmlFor="form-expiry">
-                Expiry Date
-                <InputMask required mask="99/99" maskChar={null} placeholder={"12/34"} name="expiry" id="form-expiry" onBlur={props.verify} />
-              </label>
+                <label htmlFor="formCardNo">
+                  Card number
+                  <InputMask
+                    id="formCardNo"
+                    inputmode="numeric"
+                    mask="9999 9999 9999 9999"
+                    maskChar={null}
+                    title="Enter up to 16 digits card number"
+                    required
+                    aria-required="true"
+                    type="tel"
+                    name="formCardNo"
+                    placeholder="1234 1234 1234 1234"
+                    size="16"
+                  />
+                </label>
 
-              <label htmlFor="form-cvc">
-                CVC Number
-                <input required type="text" name="cvc" id="form-cvc" inputMode="numeric" maxLength="3" onBlur={props.verify} placeholder={123} />
-              </label>
-            </div>
-            <div>
-              <label htmlFor="form-email">
+                <label htmlFor="formExpMonth">
+                  Expiry date
+                  <input required title="Enter a valid month" inputmode="numeric" placeholder="MM" type="tel" pattern="[0-9+]{2,2}" name="formExpMonth" id="formExpMonth" aria-required="true" size="2" minLength={2} maxLength={2} />
+                </label>
+                <label className="form-expiry" htmlFor="formExpYear">
+                  <input required title="Enter a valid year" inputmode="numeric" placeholder="YY" type="tel" pattern="[0-9+]{2,2}" name="formExpYear" id="formExpYear" aria-required="true" size="2" minLength={2} maxLength={2} />
+                </label>
+                <label htmlFor="formCvc">
+                  CVC number
+                  <input required title="Enter the 3 digits at the back of your card" type="tel" name="formCvc" inputmode="numeric" aria-required="true" id="formCvc" pattern="[0-9+]{3,}" minLength={3} maxLength={3} placeholder="123" size="3" />
+                </label>
+              </div>
+
+              <label htmlFor="formEmail">
                 Email
-                <input required type="email" name="email" id="form-email" onBlur={props.verify} placeholder={"beep@boop.com"} />
+                <input required type="email" pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9 -]+\.[a-z]{2,}" name="formEmail" aria-required="true" id="formEmail" title="Enter a valid email address" placeholder="JohnApplebaum@gmail.com" />
               </label>
 
-              <label htmlFor="form-phone">
-                Phone number
-                <InputMask mask="99 99 99 99" maskChar={null} required type="text" name="phone" id="form-phone" placeholder={"12 34 56 78"} />
+              <label htmlFor="formTelephone">
+                Phone Number
+                <InputMask id="formTelephone" inputmode="numeric" mask="99 99 99 99" maskChar={null} title="Must be a valid phone number" required aria-required="true" type="tel" name="formTelephone" placeholder="12 34 56 78" size="16" />
               </label>
             </div>
-            <div>
-              <label htmlFor="form-address">
-                Billing Address
-                <textarea required name="address" id="form-address" placeholder="Pearstreet 72, 2020 London" />
-              </label>
-            </div>
-          </form>
+          </div>
+        </section>
+        {matches ? (
+          <OrderOverview orderInfo={props.orderInfo} setOrderInfo={props.setOrderInfo} tentPrice={props.tentPrice} setUpPrice={props.setUpPrice} />
+        ) : (
+          <MobileOrderOverview orderInfo={props.orderInfo} tentPrice={props.tentPrice} setUpPrice={props.setUpPrice} />
+        )}
+        <div className="booking-steps-buttons">
+          <button className="secondary" onClick={goBack}>
+            Back
+          </button>
+          <button type="submit" className="primary" onSubmit={confirm}>
+            Confirm payment →
+          </button>
         </div>
-      </section>
-      {matches ? (
-        <OrderOverview orderInfo={props.orderInfo} setOrderInfo={props.setOrderInfo} tentPrice={props.tentPrice} setUpPrice={props.setUpPrice} />
-      ) : (
-        <MobileOrderOverview orderInfo={props.orderInfo} tentPrice={props.tentPrice} setUpPrice={props.setUpPrice} />
-      )}
-      <div className="booking-steps-buttons">
-        <button className="secondary" onClick={goBack}>
-          Back
-        </button>
-        <button type="submit" className="primary" onClick={confirm}>
-          Continue to payment →
-        </button>
       </div>
-    </div>
+    </form>
   );
 }
 

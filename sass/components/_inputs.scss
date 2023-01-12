@@ -1,4 +1,5 @@
 // payment fields
+
 .payment-field {
   border: $border;
   margin-top: 1rem;
@@ -6,38 +7,51 @@
   padding-bottom: 1.5rem;
   display: grid;
   row-gap: 1rem;
-  form {
+
+  label {
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
-    div {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      label {
-        display: flex;
-        flex-direction: column;
-        row-gap: 0.25rem;
+    row-gap: 0.25rem;
 
-        span {
-          position: relative;
-          color: $grey;
-          align-self: center;
-        }
-      }
+    span {
+      position: relative;
+      color: $grey;
+      align-self: center;
     }
   }
+
   input,
   textarea {
     background-color: $black;
     border: $border;
     color: $white;
     padding: 0.5rem;
+    margin-top: 0.3rem;
   }
   input::placeholder,
   textarea::placeholder {
     color: $grey;
   }
+}
+.form-expiry {
+  align-self: flex-end;
+}
+
+.payment-form-field {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  column-gap: 2rem;
+  max-width: 30rem;
+}
+.card-details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 // counter input
