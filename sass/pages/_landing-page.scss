@@ -85,9 +85,14 @@
   padding-inline: 2rem;
   gap: 2rem;
   justify-content: center;
+  overflow-y: scroll;
+  max-height: 80vh;
+  h4 {
+    color: $grey;
+  }
 
   h5 {
-    color: $orange;
+    color: $white;
     text-transform: uppercase;
   }
 
@@ -95,6 +100,9 @@
     border: $border;
     padding: 1rem;
     box-shadow: $shadow;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .lineup-card-titles {
@@ -105,5 +113,11 @@
 
   .lineup-showing {
     width: 100%;
+    h4 {
+      color: $white;
+    }
+    h5 {
+      color: $orange;
+    }
   }
 }

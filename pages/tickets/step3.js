@@ -72,21 +72,21 @@ function step3(props) {
                 </AccordionItemHeading>
                 <AccordionItemPanel>
                   <div className="accordion-field">
-                    <label>
+                    <label htmlFor="firstName">
                       First name
-                      <input title="Must be a valid First name" required pattern="[A-Za-z]{1,50}" aria-required="true" type="text" name="firstName" placeholder="John" />
+                      <input id="firstName" title="Must be a valid First name" required pattern="[A-Za-z]{1,50}" aria-required="true" type="text" name="firstName" placeholder="John" />
                     </label>
-                    <label>
+                    <label htmlFor="lastName">
                       Last name
-                      <input title="Must be a valid Last name" required pattern="[A-Za-z]{1,40}" aria-required="true" type="text" name="lastName" placeholder="Applebaum" />
+                      <input id="lastName" title="Must be a valid Last name" required pattern="[A-Za-z]{1,50}" aria-required="true" type="text" name="lastName" placeholder="Applebaum" />
                     </label>
-                    <label>
+                    <label htmlFor="telephone">
                       Phone Number
-                      <input title="Must be a valid phone number" required pattern="[0-9+]{8,18}" aria-required="true" type="text" name="telephone" placeholder="+45 12345678" />
+                      <input id="telephone" title="Must be a valid phone number" required pattern="[0-9+]{8,18}" aria-required="true" type="text" name="telephone" placeholder="12345678" />
                     </label>
-                    <label>
+                    <label htmlFor="birthDate">
                       Date of Birth
-                      <input title="Must be a valid Date of birth" required pattern="[0-9]" aria-required="true" type="date" name="birthDate" />
+                      <input id="birthDate" title="Must be a valid date of birth" required pattern="[0-9]" aria-required="true" type="date" name="birthDate" />
                     </label>
                   </div>
                 </AccordionItemPanel>
@@ -103,7 +103,7 @@ function step3(props) {
           <button className="secondary" onClick={goBack}>
             Back
           </button>
-          <button type="submit" className="primary" onClick={submit}>
+          <button type="submit" className="primary" onSubmit={submit}>
             Continue to payment →
           </button>
         </div>

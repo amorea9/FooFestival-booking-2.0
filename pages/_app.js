@@ -9,7 +9,6 @@ function MyApp({ Component, pageProps }) {
     vipTickets: 0,
     regTickets: 0,
     totalTickets: 0,
-
     selectedArea: "",
     tentService: false,
     greenCamping: false,
@@ -18,6 +17,18 @@ function MyApp({ Component, pageProps }) {
     orderID: "",
     guests: [],
   });
+  const [bandsPlaying, setBandsPlaying] = useState([]);
+
+  //fetch bands
+
+  useEffect(() => {
+    async function getBandsPlaying() {
+      const res = await fetch("https://morning-mountain-4570.fly.dev/bands");
+      const bands = await res.json();
+      setBandsPlaying(bands);
+    }
+    getBandsPlaying();
+  }, []);
 
   //everytime either reg tickets or vip tickets are updated, update total tickets too
   useEffect(() => {
@@ -101,6 +112,7 @@ function MyApp({ Component, pageProps }) {
           tentSize={tentSize}
           setOrderInfo={setOrderInfo}
           setOrderID={setOrderID}
+          bandsPlaying={bandsPlaying}
         />
       </Layout>
     </>
