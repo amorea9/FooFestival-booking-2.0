@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/foofest-logo.png";
+import Logo from "../assets/foofest-logo.webp";
 import Image from "next/image";
 import Link from "next/link";
 

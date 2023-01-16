@@ -119,4 +119,20 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
+// export async function getStaticProps() {
+//   const url = "https://morning-mountain-4570.fly.dev/bands";
+//   const res = await fetch(url);
+//   if (res.status != 200) {
+//     return {
+//       notFound: true,
+//     };
+//   }
+//   const bands = await res.json();
+//   //    setBandsPlaying(bands);
+//   return {
+//     props: {
+//       bands: bands,
+//     },
+//   };
+// }
 export default MyApp;
