@@ -4,7 +4,7 @@ import Image from "next/image";
 function HeadlinersCard({ src, bandName, day, descr, alt }) {
   return (
     <article className="box headliner-box">
-      <Image className="headliner-img" src={src} alt={alt} />
+      <Image className="headliner-img" src={src} alt={alt} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px" />
       <div className="headliner-card-titles">
         <h3>{bandName}</h3>
         <h4>{day}</h4>
